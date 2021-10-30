@@ -1,0 +1,4 @@
+apple carrot mango
+banana apple orange carrot
+orange pineapple orange mango banana onion
+carrot onion

@@ -1,6 +1,8 @@
-elements_array = ["a", "b", "c"]
-print("--------Task3--------")
-print("Raw data:", elements_array)
-def enumerated(data):
-    return list(zip(range(len(data)), data))
-print("Enumerated:", enumerated(elements_array))
+print("--------Task4--------")
+def wordcount(filename):
+    fd = open(filename, "r")
+    word_list = fd.read().split()  
+    word_dict = {word:word_list.count(word) for word in word_list}
+    for i in word_dict:
+        print(i, ':', word_dict[i], sep = '')
+wordcount("data.txt")
