@@ -20,7 +20,7 @@ if args.key != None and args.val == None:
     try:
         data = json.load(read_file)
     except ValueError:
-        print("Bad JSON file. Try another.")
+        print("Bad JSON file. Try another one.")
         exit(1)
 
     if args.key in data:
@@ -36,7 +36,12 @@ if args.key != None and args.val != None:
         json.dump(data, write_file)
     else:
         write_file.seek(0)
-        data = json.load(write_file)
+
+        try:
+            data = json.load(write_file)
+        except ValueError:
+            print("Bad JSON file. Try another one.")
+
         if args.key in data:
             data[args.key].append(args.val)
         else:
