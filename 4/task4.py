@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import sys
 print("--------Task4--------")
 def wordcount(filename):

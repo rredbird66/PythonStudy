@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 names = ["python", "perl", "java", "c", "haskell", "ruby"]
 print("--------Task1--------")
 print("Raw data:", names)

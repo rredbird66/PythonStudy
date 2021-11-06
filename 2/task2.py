@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 num_array = [1,2,1,3,2,5]
 print("--------Task2--------")
 print("Raw data:", num_array)

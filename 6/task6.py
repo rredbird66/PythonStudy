@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import argparse
 import json
 import os
@@ -14,7 +16,13 @@ args = parser.parse_args()
 
 if args.key != None and args.val == None:
     read_file = open(storage_file,"r")
-    data = json.load(read_file)
+
+    try:
+        data = json.load(read_file)
+    except ValueError:
+        print("Bad JSON file. Try another.")
+        exit(1)
+
     if args.key in data:
         print(*data[args.key], sep = ', ' )
     else:

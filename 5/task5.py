@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 import time
 import math
 
@@ -11,29 +12,26 @@ def TimeInterval(func):
         return result
     return Wrapper
 # Возведение в квадрат через цикл
+@TimeInterval
 def power2FOR(num_array):
     result = list()
     for i in num_array:
         result.append(num_array[i] * num_array[i])
     return result
 # Возведение в квадрат через comprehension
+@TimeInterval
 def power2COM(num_array):
     return [i*i for i in num_array]
 # Возведение в квадрат через map
-def power2(number):
-    return number*number
+@TimeInterval
 def power2MAP(num_array):
-    return list(map(power2, num_array))
+    return list(map(lambda i: i*i, num_array))
 # Замеры времени исполнения
-array = list()
-for i in range(10000001):
-    array.append(i)
-timeFOR = TimeInterval(power2FOR)
-timeCOM = TimeInterval(power2COM)
-timeMAP = TimeInterval(power2MAP)
+array = list(range(10000001))
+
 print("FOR realization:")
-timeFOR(array)
+power2FOR(array)
 print("COMprehension realization:")
-timeCOM(array)
+power2COM(array)
 print("MAP realization:")
-timeMAP(array)
+power2MAP(array)
