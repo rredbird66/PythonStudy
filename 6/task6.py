@@ -14,7 +14,7 @@ parser.add_argument('-k', '--key', type = str, help = 'print the values correspo
 parser.add_argument('-v', '--val', type = str, help = 'value to save in storage')
 args = parser.parse_args()
 
-if args.key != None and args.val == None:
+if args.key and not args.val:
     read_file = open(storage_file,"r")
 
     try:
@@ -28,7 +28,7 @@ if args.key != None and args.val == None:
     else:
         print(None)
     read_file.close();
-if args.key != None and args.val != None:
+if args.key and args.val:
     write_file = open(storage_file, "a+")
     if os.path.getsize(storage_file) == 0:
         data = defaultdict(list)
