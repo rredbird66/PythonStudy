@@ -1,15 +1,13 @@
 #! /usr/bin/python3
 
-import math
-
 class Vector :
     def __init__(self, x, y):
         self.x = x
         self.y = y
     def __str__(self):
-        return '<{}; {}>'.format(self.x, self.y)
+        return f"<{self.x}; {self.y}>"
     def __repr__(self):
-        return '<{}; {}>'.format(self.x, self.y)
+        return f"<{self.x}; {self.y}>"
 
 
     def __add__(self, other):
@@ -28,6 +26,8 @@ class Vector :
 
     def __abs__(self):
         return (self.x ** 2 + self.y ** 2) ** 0.5
+    def __len__(self):
+        return abs(int(abs(self))) 
 
     def __mul__(self, value):
         return Vector(self.x * value, self.y * value)
@@ -56,6 +56,7 @@ if __name__ == "__main__":
     print("v1 + v2: ", v1 + v2)
     print("v1 - v2: ", v1 - v2)
     print("abs(v1): ", abs(v1))
+    print("len(v1): ", len(v1))
 
     print("v1 * 5: ", v1 * 5)
     print("v1 == v2: ", v1 == v2)
