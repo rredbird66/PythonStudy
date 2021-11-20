@@ -1,11 +1,12 @@
 #! /usr/bin/python3
 
 import math
-
+from abc import abstractmethod
 
 class BaseF:
-    def square(self):
-        raise NotImplementedError()
+    @abstractmethod
+    def sqare(self):
+        pass   
 
 class Rectangle(BaseF) :
     name = "Rectangle"

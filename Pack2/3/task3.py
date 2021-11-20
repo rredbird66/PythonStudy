@@ -26,9 +26,8 @@ class Logger(metaclass=Singleton):
     def __del__(self):
         self.filedescr.close()
 
-    def log(self, level, Msg):
-        str_to_log = '[{}] {}: {}'.format(level.name, datetime.datetime.now().time(), Msg) + '\n'
-        self.filedescr.write(str_to_log)
+    def flush(self):
+        self.filedescr.flush()
 
     def Debug(self, Msg):
         str_to_log = '[{}] {}: {}'.format(logLevel.DEBUG.name, datetime.datetime.now().time(), Msg) + '\n'
@@ -45,25 +44,23 @@ class Logger(metaclass=Singleton):
     def Error(self, Msg):
         str_to_log = '[{}] {}: {}'.format(logLevel.ERROR.name, datetime.datetime.now().time(), Msg) + '\n'
         self.filedescr.write(str_to_log)
+        self.filedescr.flush()
 
     def Critical(self, Msg):
         str_to_log = '[{}] {}: {}'.format(logLevel.CRITICAL.name, datetime.datetime.now().time(), Msg) + '\n'
         self.filedescr.write(str_to_log)
+        self.filedescr.flush()
 
 if __name__ == "__main__":
 
     logger = Logger("out.log")
 
-    logger.log(logLevel.DEBUG, "Log msg 1")
-    logger.log(logLevel.ERROR, "Log msg 2")  
-    logger.log(logLevel.WARNING, "Log msg 3")
-    logger.log(logLevel.INFO, "Log msg 4")
+    logger.Info("Log msg 1")
+    logger.Debug("Log msg 2")  
+    logger.Error("Log msg 3")
+    logger.Warning("Log msg 4")
 
     same_log = Logger()
-    same_log.log(logLevel.DEBUG, "Log msg 5")
-    same_log.log(logLevel.ERROR, "Log msg 6")  
-    same_log.log(logLevel.WARNING, "Log msg 7")
-    same_log.log(logLevel.INFO, "Log msg 8")
 
     same_log.Debug("Log msg 9")
     same_log.Error("Log msg 10")  
